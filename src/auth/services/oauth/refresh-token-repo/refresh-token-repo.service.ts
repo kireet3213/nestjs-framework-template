@@ -115,8 +115,11 @@ export class RefreshTokenRepoService {
   public async createBearerToken(
     refreshToken: RefreshTokenModel,
   ): Promise<string> {
-    return this.jwtService.signAsync(refreshToken.id, {
-      algorithm: 'HS256',
-    });
+    return this.jwtService.signAsync(
+      { id: refreshToken.id },
+      {
+        algorithm: 'HS256',
+      },
+    );
   }
 }

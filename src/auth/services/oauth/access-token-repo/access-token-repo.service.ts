@@ -102,8 +102,11 @@ export class AccessTokenRepoService {
   public async createBearerToken(
     accessToken: AccessTokenModel,
   ): Promise<string> {
-    return this.jwtService.signAsync(accessToken.id, {
-      algorithm: 'HS256',
-    });
+    return this.jwtService.signAsync(
+      { id: accessToken.id },
+      {
+        algorithm: 'HS256',
+      },
+    );
   }
 }
